@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Schema;
 
 class PostSeeder extends Seeder
 {
@@ -16,6 +17,10 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        Schema::disableForeignKeyConstraints();
+        Post::truncate();
+        Schema::enableForeignKeyConstraints();
+
         for ($i = 0; $i < 10; $i++) {
             $post = new Post();
             $post->title = $faker->sentence(3);
