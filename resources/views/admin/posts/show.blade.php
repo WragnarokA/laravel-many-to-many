@@ -12,9 +12,15 @@
         <div class="card-body">
           <h5 class="card-title">{{$post->title}}</h5>
           <p class="card-text">{{$post->content}}</p>
+          @foreach ($post->tags as $tag)
+          <ul class="list-group">
+            <li class="list-group-item">{{$tag->name}}</li>
+          </ul>
+          @endforeach
           <p class="card-text">{{$post->type ? $post->type->name : "Non ha il Type"}}</p>
           <a href="{{ route("admin.posts.index", $post->id)}}" class="btn btn-primary">Torna alla Lista</a>
         </div>
+              
 
       </div>
         

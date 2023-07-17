@@ -50,6 +50,10 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->save();
 
+        $newPost->tags()->attach($data["tags"]);
+
+        // $newPost->tags()->sync($data["tags"]);
+
         return to_route("admin.posts.show", $newPost);
     }
 
@@ -84,7 +88,15 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+
+        $post->update($data);
+
+        // $post->tags()->attach( $data->tags );
+
+        $post->tags()->attach($data["tags"]);
+
+        return to_route("admin.posts.show", $post);
     }
 
     /**
