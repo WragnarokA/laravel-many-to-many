@@ -19,9 +19,14 @@
           @endforeach
           <p class="card-text">{{$post->type ? $post->type->name : "Non ha il Type"}}</p>
           <a href="{{ route("admin.posts.index", $post->id)}}" class="btn btn-primary">Torna alla Lista</a>
+          
+          <form action="{{ route('admin.posts.destroy', $post) }}" method="post"">
+            @csrf
+            @method('DELETE')
+            <input class="btn btn-danger m-4" type="submit" value="Cancella">
+          </form>
+          
         </div>
-              
-
       </div>
         
    
