@@ -8,6 +8,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Tag;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -46,13 +47,16 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
+        $img_path = Storage::put("uploads", $data['image']);
+        $data['image'] = $img_path;
+
+
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
 
         $newPost->tags()->attach($data["tags"]);
 
-        // $newPost->tags()->sync($data["tags"]);
 
         return to_route("admin.posts.show", $newPost);
     }

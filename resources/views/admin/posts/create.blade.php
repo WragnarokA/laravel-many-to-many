@@ -16,7 +16,7 @@
    </div>
    @endif
 
-   <form action="{{ route("admin.posts.store") }}" method="POST">
+   <form action="{{ route("admin.posts.store") }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="form-floating mb-3">
@@ -29,10 +29,11 @@
         <label for="content">Content</label>
     </div>
 
-    <div class="form-floating mb-3">
-        <input type="text" name="image"  id="image" value="{{ old("image") }}" class="form-control"  placeholder="Image">
-        <label for="image">Image</label>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Image</label>
+        <input class="form-control" type="file"  name="image"  id="image"  value="{{ old("image") }}"  placeholder="Image">
     </div>
+
 
     <select class="form-select mb-3" name="type_id" id="type_id" aria-label="Default select example">
         <option selected disabled >Open this Type menu</option>
@@ -50,8 +51,8 @@
              </div>
          @endforeach
     
-
     </div>
+
             
 
 

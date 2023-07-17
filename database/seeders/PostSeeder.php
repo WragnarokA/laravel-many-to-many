@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
             $post = new Post();
             $post->title = $faker->sentence(3);
             $post->content = $faker->text(500);
-            $post->image = $faker->imageUrl(800, 600, 'animals', true);
+            $post->image = "placeholders/placeholder.jpg";
             $post->save();
         }
     }
