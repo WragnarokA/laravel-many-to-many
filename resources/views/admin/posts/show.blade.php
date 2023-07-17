@@ -12,7 +12,7 @@
         <div class="card-body">
           <h5 class="card-title">{{$post->title}}</h5>
           <p class="card-text">{{$post->content}}</p>
-          {{-- <p class="card-text">{{$post->$type ? $post->$type->name : "Non ha il Type"}}</p> --}}
+          <p class="card-text">{{$post->type ? $post->type->name : "Non ha il Type"}}</p>
           <a href="{{ route("admin.posts.index", $post->id)}}" class="btn btn-primary">Torna alla Lista</a>
         </div>
 

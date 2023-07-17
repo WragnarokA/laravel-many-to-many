@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Tag;
 use App\Models\Type;
 
 class PostController extends Controller
@@ -30,8 +31,9 @@ class PostController extends Controller
     public function create()
     {
         $types = Type::all();
+        $tags = Tag::all();
 
-        return view("admin.posts.create", compact("types"));
+        return view("admin.posts.create", compact("types", "tags"));
     }
 
     /**

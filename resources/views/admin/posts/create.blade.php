@@ -34,15 +34,32 @@
         <label for="image">Image</label>
     </div>
 
-    <select class="form-select mb-5" name="type_id" id="type_id" aria-label="Default select example">
+    <select class="form-select mb-3" name="type_id" id="type_id" aria-label="Default select example">
         <option selected disabled >Open this Type menu</option>
         @foreach ($types as $type)
         <option value="{{ $type->id }}">{{ $type->name }}</option>
-            
         @endforeach
-      </select>
+    </select>
+   
+    <div class="container ">
+      
+         @foreach ($tags as $i => $tag)
+             <div class="form-check form-switch mb-1 col-6">
+                   <input class="form-check-input" value="{{ $tag->id }}" name="tags[]" id="tags{{$i}}" type="checkbox" role="switch" >
+                   <label class="form-check-label" for="tags{{$i}}">{{ $tag->name }}</label>
+             </div>
+         @endforeach
+    
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+            
+
+
+
+        
+        
+    <button type="submit" class="btn btn-primary my-5">Submit</button>
+        
 
 
     
